@@ -150,4 +150,113 @@ a:hover {
 
 /* Sections */
 
+section{
+    padding-top: 4wh;
+    height: 96wh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
 
+.section-container{
+    display: flex;
+}
+
+
+
+/* Replace the broken profile styles with these */
+
+#profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    height: 80vh;
+}
+
+.section_pic-container {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    flex-shrink: 0;
+}
+
+.section_pic-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.section_text {
+    align-self: center;
+    text-align: center;
+}
+
+.section_text_p1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: rgb(85, 85, 85);
+    margin-bottom: 0.5rem;
+}
+
+.section_text_p2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(85, 85, 85);
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+
+}
+
+.btn-color-1 {
+    background: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.btn-color-2 {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.btn-color-1:hover, .btn-color-2:hover {
+    opacity: 0.7;
+}
+
+#socials-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.icon {
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+}
