@@ -1,105 +1,215 @@
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>My Portforlio</title>
-                <link rel="stylesheet" href="style.css"/>
-                <link rel="stylesheet" href="mediaqueries.css" />
-            </head>
-            <body>
-                
-                <nav id="desktop-nav">
-                    <div class="logo"> Jeremy Mwesigwa </div>
-                    <div>
-                        <uL class="nav-links">
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#experience">Experience</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                            <li><a href="#contact">Contacts</a></li>
-                        </ul>
-                    </div>
-                </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Mwesigwa | Portfolio</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+<body>
+    
+    <nav id="desktop-nav">
+        <div class="logo">Jeremy Mwesigwa</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-                <nav id="hamburger-nav">
-                    <div class="logo">Jeremy Mwesigwa</div>
-                    <div class="hamburger-menu">
-                        <div class="hamburger-icon" onclick="togglemenu()">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="menu-links" >
-                            <li><a href="#about" onclick="togglemenu()">About</a></li>
-                            <li><a href="#experience" onclick="togglemenu()">Experience</a></li>
-                            <li><a href="#projects" onclick="togglemenu()">Projects</a></li>
-                            <li><a href="#contact" onclick="togglemenu()">Contacts</a></li>
-                        </div>
-                    </div>
-                </nav>
+    <nav id="hamburger-nav">
+        <div class="logo">Jeremy Mwesigwa</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <section id="profile" class="fade-in-section">
+        <div class="section_pic-container">
+            <img src="./assets/profile-pic.png" alt="Jeremy's profile">
+        </div>
+        <div class="section_text">
+            <p class="section_text_p1">Hello, I'm</p>
+            <h1 class="title">Jeremy Mwesigwa</h1>
+            <p class="section_text_p2">Android Developer & CS Student</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')">Download CV</button>
+                <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="My LinkedIn" class="icon" onclick="location.href='https://www.linkedin.com/in/jeremy-sebudde-b08733368'">
+                <img src="./assets/github.png" alt="My GitHub" class="icon" onclick="location.href='https://github.com/NewDev-Ops'">
+            </div>
+        </div>
+    </section>
 
-            <section id="profile">
-                <div class="section_pic-container">
-                    <img src="./assets/profile-pic.png" alt="Jeremy's profile">
-                </div>
-                <div class="section_text">
-                    <p class="section_text_p1">Hello, I'm</p>
-                    <h1 class="title">Jeremy Mwesigwa</h1>
-                    <p class="section_text_p2">App Developer</p>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')">Download CV</button>
-                        <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
-                    </div>
-                    <div id="socials-container">
-                        <img src="./assets/linkedin.png" alt="My LinkedIn" class="icon" onclick="location.href='https://www.linkedin.com/in/jeremy-sebudde-b08733368'">
-                        <img src="./assets/github.png" alt="My GitHub" class="icon" onclick="location.href='https://github.com/NewDev-Ops'">
-                    </div>
-                </div>
-            </section>
-
-            <section id="about">
-            <p class="section_text_p1">Get To Know Me</p>
-            <p class="title">About Me</p>
+    <section id="about" class="fade-in-section">
+        <p class="section_text_p1">Get To Know Me</p>
+        <h1 class="title">About Me</h1>
+        
+        <div class="section-container">
+            <div class="section_pic-container">
+                <img src="./assets/about-pic.png" alt="profile picture" class="about-pic">
+            </div>
             
-            <div class="section-container">
-                
-                <div class="section_pic-container">
-                    <img src="./assets/about-pic.png" alt="profile picture" class="about-pic">
-                </div>
-                
-                <div class="about-details-container">
-                    <div class="about-containers">
-                        <div class="details-container">
-                            <img src="./assets/experience.png" alt="experience icon" class="icon">
-                            <h3>Experience</h3>
-                            <p>1 year <br/> Internship in Customer Service at Sable International </p> <br>
-                            <p>3 months <br/> Volunteer Work at St John Ambulance Kenya </p>
-                        </div>
-                        <div class="details-container">
-                            <img src="./assets/education.png" alt="education icon" class="icon">
-                            <h3>Education</h3>
-                            <p> HighSchool Diploma <br/> B.Sc. Bachelors Degree </p>
-                        </div>
-                    </div>
-                    <div class="text-container"> 
-                        Aiming for the Best. Leaving God to handle the rest.
-                    </div>
-                </div>
-                
-            </div> <img src="assets/arrow.png" alt="arrow.png" class="arrow" onclick="location.href='#experience'">
-        </section>
-        <section id="experience">
-            <p class="section_text_p1">My Journey So Far</p>
-            <p class="title">Experience</p>
-            <div class="experience-details-container">
+            <div class="about-details-container">
                 <div class="about-containers">
-                    <div class="details-containers">
-                        <h2 class="experience-sub-title">Android Development</h2>
-                        <div class="article-container"></div>
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="experience icon" class="icon">
+                        <h3>Experience</h3>
+                        <p>1 Year<br/>Intern, Sable International</p><br>
+                        <p>Leadership<br/>IEEE & Student Council</p>
                     </div>
-                </div>>
-        </section>
-                <script src="script.js">    </script>
-            </body>
-            </html>
+                    <div class="details-container">
+                        <img src="./assets/education.png" alt="education icon" class="icon">
+                        <h3>Education</h3>
+                        <p>BSc. Computer Science<br/>Strathmore University</p><br>
+                        <p>CCNA Cyber Ops<br/>Cisco Certified</p>
+                    </div>
+                </div>
+                <div class="text-container"> 
+                    <p>I am a first-year Computer Science student at Strathmore University with a genuine passion for building mobile applications that are private, purposeful, and polished. I am the kind of person who thinks a problem through before touching a keyboard, and who cares more about shipping something right than shipping something fast. I am at my best on teams that value craftsmanship, honesty, and long-term thinking.</p>
+                </div>
+            </div>
+        </div> 
+        <img src="assets/arrow.png" alt="Scroll down" class="arrow" onclick="location.href='#experience'">
+    </section>
+
+    <section id="experience" class="fade-in-section">
+        <p class="section_text_p1">Explore My</p>
+        <h1 class="title">Skills & Experience</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Technical Toolkit</h2>
+                    <div class="article-container list-layout">
+                        <article>
+                            <h4>Mobile Dev</h4>
+                            <p>Android Studio, Kotlin, React Native, Java</p>
+                        </article>
+                        <article>
+                            <h4>UI/UX Design</h4>
+                            <p>Figma, Material Design, Dark/Light Theming</p>
+                        </article>
+                        <article>
+                            <h4>Tools & Arch</h4>
+                            <p>Git, Offline-first architecture, VS Code</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Professional Journey</h2>
+                    <div class="article-container list-layout">
+                        <article>
+                            <h4>Sable International</h4>
+                            <p>Intern (Jun 2023 - May 2024)</p>
+                        </article>
+                        <article>
+                            <h4>Strathmore Student Council</h4>
+                            <p>Academic Sub-Committee (Sep 2025 - Present)</p>
+                        </article>
+                        <article>
+                            <h4>IEEE Student Branch</h4>
+                            <p>Societies Office (Sep 2025 - Present)</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/arrow.png" alt="Scroll down" class="arrow" onclick="location.href='#projects'">
+    </section>
+
+    <section id="projects" class="fade-in-section">
+        <p class="section_text_p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container color-container">
+                    <h2 class="experience-sub-title project-title">PocketPal</h2>
+                    <p class="project-desc">A fully offline personal finance tracker with device-centric security, visual spending insights, and an M-Pesa wallet integration display. Built with React Native & Android Studio.</p>
+                    <div class="tag-row">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Offline-First</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/NewDev-Ops'">View Code</button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <h2 class="experience-sub-title project-title">Milestone</h2>
+                    <p class="project-desc">A backend-free goal-tracking application enabling users to log progress with daily dedication streaks, full progress journals, and active goal cards.</p>
+                    <div class="tag-row">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Local Storage</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/NewDev-Ops'">View Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/arrow.png" alt="Scroll down" class="arrow" onclick="location.href='#contact'">
+    </section>
+
+    <section id="contact" class="fade-in-section">
+        <p class="section_text_p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon">
+                <p><a href="mailto:jeremysebudde@gmail.com">jeremysebudde@gmail.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/phone.png" alt="Phone icon" class="icon contact-icon">
+                <p><a href="tel:+254743962639">+254 743 962 639</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon">
+                <p><a href="https://www.linkedin.com/in/jeremy-sebudde-b08733368" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&#169; 2026 Jeremy Sebudde Mwesigwa. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-section').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
