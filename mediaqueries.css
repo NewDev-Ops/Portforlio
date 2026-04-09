@@ -85,7 +85,7 @@
     :root {
         --section-margin: 5%;
         --section-padding: var(--spacing-xl);
-        --nav-height: 12vh;
+        --nav-height: 70px;
     }
 
     /* Navigation */
@@ -103,12 +103,12 @@
         justify-content: center;
         gap: var(--spacing-lg);
         min-height: auto;
-        padding-top: calc(var(--nav-height) + var(--spacing-lg));
+        padding-top: calc(var(--nav-height) + var(--spacing-xl));
     }
 
     .section_pic-container {
-        height: clamp(200px, 50vw, 280px);
-        width: clamp(200px, 50vw, 280px);
+        height: clamp(180px, 45vw, 280px);
+        width: clamp(180px, 45vw, 280px);
     }
 
     .section_text {
@@ -298,31 +298,56 @@
     }
 
     .shop-categories {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
 
     .shop-card {
         max-width: 100%;
+        padding: var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: var(--spacing-md);
+    }
+
+    .shop-card::before {
+        height: 100%;
+        width: 4px;
+        top: 0;
+        left: 0;
+        right: auto;
     }
 
     .shop-icon {
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        margin: 0;
+        border-radius: var(--radius-md);
     }
 
     .shop-icon svg {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .shop-card:hover .shop-icon {
+        transform: scale(1.05);
     }
 
     .shop-card h3 {
         font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
     }
 
     .shop-card p {
         font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .shop-card-content {
+        flex: 1;
     }
 
     /* Contact Section */
@@ -421,6 +446,7 @@
     :root {
         --section-margin: 4%;
         --section-padding: var(--spacing-lg);
+        --nav-height: 60px;
     }
 
     .logo {
@@ -439,9 +465,13 @@
         font-size: 0.9rem;
     }
 
+    #profile {
+        padding-top: calc(var(--nav-height) + var(--spacing-lg));
+    }
+
     .section_pic-container {
-        height: 180px;
-        width: 180px;
+        height: 160px;
+        width: 160px;
     }
 
     .btn-container {
@@ -528,6 +558,27 @@
 
     .about-containers {
         flex-direction: row;
+    }
+
+    .shop-categories {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .shop-card {
+        text-align: center;
+        display: block;
+    }
+
+    .shop-card-content {
+        flex: unset;
+    }
+
+    .shop-card::before {
+        height: 4px;
+        width: auto;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 
     .contact-info-upper-container {
