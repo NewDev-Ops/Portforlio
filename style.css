@@ -34,6 +34,12 @@
     --shadow-sm: 0 2px 8px var(--color-shadow);
     --shadow-md: 0 8px 24px var(--color-shadow);
     --shadow-lg: 0 15px 35px var(--color-shadow-hover);
+
+    --nav-height: 15vh;
+    --section-padding: var(--spacing-2xl);
+    --section-margin: 5%;
+    --container-max: 1200px;
+    --touch-target-min: 44px;
 }
 
 /* ========================================
@@ -220,13 +226,19 @@ nav, .nav-links {
 nav {
     justify-content: space-around;
     align-items: center;
-    height: 17vh;
+    height: var(--nav-height);
 }
 
 .nav-links {
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     list-style: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
+}
+
+.nav-links a {
+    min-height: var(--touch-target-min);
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
@@ -262,6 +274,14 @@ nav {
 /* Mobile Nav */
 #hamburger-nav {
     display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-lg);
+    height: var(--nav-height);
+}
+
+#hamburger-nav .logo {
+    font-size: 1.5rem;
 }
 
 .hamburger-menu {
@@ -273,9 +293,12 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 24px;
+    height: var(--touch-target-min);
     width: 30px;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .hamburger-icon span {
@@ -300,11 +323,14 @@ nav {
 }
 
 .menu-links a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: var(--spacing-md) var(--spacing-xl);
     text-align: center;
     font-size: 1.1rem;
     color: var(--color-text);
+    min-height: var(--touch-target-min);
 }
 
 .menu-links li {
@@ -333,9 +359,8 @@ nav {
    Sections
    ======================================== */
 section {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--section-padding) var(--section-margin);
     min-height: 100vh;
-    margin: 0 10%;
     box-sizing: border-box;
     position: relative;
     display: flex;
@@ -348,7 +373,7 @@ section {
     display: flex;
     gap: var(--spacing-2xl);
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--container-max);
 }
 
 .section-header {
@@ -467,14 +492,20 @@ section {
 }
 
 .arrow {
-    position: absolute;
-    right: -5rem;
-    bottom: 2.5rem;
-    width: 2rem;
-    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-top: var(--spacing-xl);
     cursor: pointer;
     opacity: 0.5;
     transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.arrow img {
+    width: 100%;
+    height: 100%;
 }
 
 .arrow:hover {
