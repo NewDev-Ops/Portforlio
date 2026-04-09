@@ -1,76 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portforlio</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="mediaqueries.css" />
-</head>
-<body>
-    
-    <nav id="desktop-nav">
-        <div class="logo"> Jeremy Mwesigwa </div>
-        <div>
-            <uL class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contacts</a></li>
-            </ul>
-        </div>
-    </nav>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>My Portforlio</title>
+                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="mediaqueries.css" />
+            </head>
+            <body>
+                
+                <nav id="desktop-nav">
+                    <div class="logo"> Jeremy Mwesigwa </div>
+                    <div>
+                        <uL class="nav-links">
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#experience">Experience</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#contact">Contacts</a></li>
+                        </ul>
+                    </div>
+                </nav>
 
-    <nav id="hamburger-nav">
-        <div class="logo">Jeremy Mwesigwa</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="togglemenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-links" >
-                <li><a href="#about" onclick="togglemenu()">About</a></li>
-                <li><a href="#experience" onclick="togglemenu()">Experience</a></li>
-                <li><a href="#projects" onclick="togglemenu()">Projects</a></li>
-                <li><a href="#contact" onclick="togglemenu()">Contacts</a></li>
-            </div>
-        </div>
-    </nav>
+                <nav id="hamburger-nav">
+                    <div class="logo">Jeremy Mwesigwa</div>
+                    <div class="hamburger-menu">
+                        <div class="hamburger-icon" onclick="togglemenu()">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="menu-links" >
+                            <li><a href="#about" onclick="togglemenu()">About</a></li>
+                            <li><a href="#experience" onclick="togglemenu()">Experience</a></li>
+                            <li><a href="#projects" onclick="togglemenu()">Projects</a></li>
+                            <li><a href="#contact" onclick="togglemenu()">Contacts</a></li>
+                        </div>
+                    </div>
+                </nav>
 
 
-<section id="profile">
-    <div class="section_pic-container">
-        <img src="./assets/profile-pic.png" alt="Jeremy's profile">
-    </div>
-    <div class="section_text">
-        <p class="section_text_p1">Hello, I'm</p>
-        <h1 class="title">Jeremy Mwesigwa</h1>
-        <p class="section_text_p2">App Developer</p>
-        <div class="btn-container">
-            <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')">Download CV</button>
-            <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
-        </div>
-        <div id="socials-container">
-            <img src="./assets/linkedin.png" alt="My LinkedIn" class="icon" onclick="location.href='https://www.linkedin.com/in/jeremy-sebudde-b08733368'">
-            <img src="./assets/github.png" alt="My GitHub" class="icon" onclick="location.href='https://github.com/NewDev-Ops'">
-        </div>
-    </div>
-</section>
+            <section id="profile">
+                <div class="section_pic-container">
+                    <img src="./assets/profile-pic.png" alt="Jeremy's profile">
+                </div>
+                <div class="section_text">
+                    <p class="section_text_p1">Hello, I'm</p>
+                    <h1 class="title">Jeremy Mwesigwa</h1>
+                    <p class="section_text_p2">App Developer</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')">Download CV</button>
+                        <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
+                    </div>
+                    <div id="socials-container">
+                        <img src="./assets/linkedin.png" alt="My LinkedIn" class="icon" onclick="location.href='https://www.linkedin.com/in/jeremy-sebudde-b08733368'">
+                        <img src="./assets/github.png" alt="My GitHub" class="icon" onclick="location.href='https://github.com/NewDev-Ops'">
+                    </div>
+                </div>
+            </section>
 
-<section id="about">
-    <p class="section_text_p1">Get To Know Me</p>
-    <p class="title"> About Me</p>
-    <div class="section_pic-container">
-        <img src="./assets/about-pic.png" alt="profile picture" class="about_pic">
-    </div>
-    <div class="about-details-container">
-        <div class="about-containers">
-            <div class="details-container">
-                <img src="./assets/experience.png" alt="experience icon" class="icon">
-            </div>
-        </div>
-    </div>
-    <script src="script.js">    </script>
-</body>
-</html>
+            <section id="about">
+            <p class="section_text_p1">Get To Know Me</p>
+            <p class="title">About Me</p>
+            
+            <div class="section-container">
+                
+                <div class="section_pic-container">
+                    <img src="./assets/about-pic.png" alt="profile picture" class="about-pic">
+                </div>
+                
+                <div class="about-details-container">
+                    <div class="about-containers">
+                        <div class="details-container">
+                            <img src="./assets/experience.png" alt="experience icon" class="icon">
+                            <h3>Experience</h3>
+                            <p>1 year <br/> Internship in Customer Service at Sable International </p> <br>
+                            <p>3 months <br/> Volunteer Work at St John Ambulance Kenya </p>
+                        </div>
+                        <div class="details-container">
+                            <img src="./assets/education.png" alt="education icon" class="icon">
+                            <h3>Education</h3>
+                            <p> HighSchool Diploma <br/> B.Sc. Bachelors Degree </p>
+                        </div>
+                    </div>
+                    <div class="text-container"> 
+                        Aiming for the Best. Leaving God to handle the rest.
+                    </div>
+                </div>
+                
+            </div> <img src="assets/arrow.png" alt="arrow.png" class="arrow" onclick="location.href='#experience'">
+        </section>
+        <section id="experience">
+            <p class="section_text_p1">My Journey So Far</p>
+            <p class="title">Experience</p>
+            <div class="experience-details-container">
+                <div class="about-containers">
+                    <div class="details-containers">
+                        <h2 class="experience-sub-title">Android Development</h2>
+                        <div class="article-container"></div>
+                    </div>
+                </div>>
+        </section>
+                <script src="script.js">    </script>
+            </body>
+            </html>
