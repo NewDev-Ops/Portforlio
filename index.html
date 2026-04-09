@@ -168,6 +168,13 @@
                         <span class="tag">Offline-First</span>
                         <span class="tag">UI/UX</span>
                     </div>
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-row">
+                            <img src="./assets/Pocket01.jpg" alt="PocketPal screenshot 1" loading="lazy">
+                            <img src="./assets/Pocket02.jpg" alt="PocketPal screenshot 2" loading="lazy">
+                            <img src="./assets/Pocket03.jpg" alt="PocketPal screenshot 3" loading="lazy">
+                        </div>
+                    </div>
                     <div class="btn-container">
                         <a href="https://github.com/NewDev-Ops/PocketPal-Development.git" class="btn btn-color-2" target="_blank" rel="noopener">View Code</a>
                     </div>
@@ -179,6 +186,13 @@
                         <span class="tag">React Native</span>
                         <span class="tag">Kotlin</span>
                         <span class="tag">Local Storage</span>
+                    </div>
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-row">
+                            <img src="./assets/Milestone01.jpg" alt="Milestone screenshot 1" loading="lazy">
+                            <img src="./assets/Milestone02.jpg" alt="Milestone screenshot 2" loading="lazy">
+                            <img src="./assets/Milestone03.jpg" alt="Milestone screenshot 3" loading="lazy">
+                        </div>
                     </div>
                     <div class="btn-container">
                         <a href="https://github.com/NewDev-Ops/Milestone" class="btn btn-color-2" target="_blank" rel="noopener">View Code</a>
@@ -216,6 +230,14 @@
         <p>&copy; 2026 Jeremy Sebudde Mwesigwa. All Rights Reserved.</p>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous image">&lsaquo;</button>
+        <img id="lightbox-img" src="" alt="Screenshot preview">
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next image">&rsaquo;</button>
+    </div>
+
     <script>
         function toggleMenu() {
             const menu = document.querySelector('.menu-links');
@@ -235,6 +257,49 @@
 
         document.querySelectorAll('.fade-in-section').forEach((section) => {
             observer.observe(section);
+        });
+
+        // Lightbox functionality
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function openLightbox(imgElement) {
+            const row = imgElement.closest('.screenshot-row');
+            currentImages = Array.from(row.querySelectorAll('img')).map(img => img.src);
+            currentIndex = currentImages.indexOf(imgElement.src);
+            
+            document.getElementById('lightbox-img').src = imgElement.src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+            document.getElementById('lightbox-img').src = currentImages[currentIndex];
+        }
+
+        document.querySelectorAll('.screenshot-row img').forEach(img => {
+            img.addEventListener('click', () => openLightbox(img));
+        });
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+            }
         });
     </script>
 </body>
