@@ -297,13 +297,49 @@
                 <p class="section_text_p1">What People Say</p>
                 <h2 class="title">Testimonials</h2>
             </header>
-            <div class="testimonial-container">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Jeremy demonstrated exceptional problem-solving skills during his internship. He consistently delivered clean, well-documented code and showed great initiative in tackling complex features."</p>
-                    <div class="testimonial-author">
-                        <p class="author-name">Samuel Kariuki</p>
-                        <p class="author-role">Tech Lead, Sable International</p>
-                    </div>
+            <div class="testimonial-carousel">
+                <div class="testimonial-track">
+                    <article class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                            <p>Jeremy is the very definition of "quiet strength". No matter the weight of the responsibilities on his shoulders, he remains deeply grounded, calm, and highly logical. In high-pressure situations, he doesn't react impulsively; instead, his steady demeanor and patient problem-solving skills act as a vital anchor for everyone around him. He is a consummate professional who brings peace and clarity to any environment.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <p class="author-name">Lombe Chongo & Karanei Micheal</p>
+                            <p class="author-role">Colleagues</p>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                            <p>Jeremy is a straightforward and practically intellectual leader who serves as a dedicated mentor and discipler. He has an innate ability to share bold truths with clarity, fostering an environment where individuals feel both challenged and supported in their personal and spiritual growth.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <p class="author-name">Angela</p>
+                            <p class="author-role">Project Partner & Mentee</p>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                            <p>Jeremy operates with a philosophy of "joyful progress," ensuring that every project and interaction has a definitive point and leads toward a greater goal. He values deep, high-investment relationships and approaches every task with a level of patience and focus that inspires those around him.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <p class="author-name">Ruth</p>
+                            <p class="author-role">Peer and Collaborator</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-dot active" data-index="0" aria-label="View testimonial 1"></button>
+                    <button class="testimonial-dot" data-index="1" aria-label="View testimonial 2"></button>
+                    <button class="testimonial-dot" data-index="2" aria-label="View testimonial 3"></button>
                 </div>
             </div>
         </section>
@@ -405,6 +441,140 @@
                 if (e.key === 'ArrowRight') navigateLightbox(1);
             }
         });
+
+        // Testimonial Carousel
+        const carousel = document.querySelector('.testimonial-carousel');
+        const track = document.querySelector('.testimonial-track');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentSlide = 0;
+        let autoScrollInterval;
+        let isPaused = false;
+        let cardWidth;
+        let cardsPerView;
+        let maxScroll;
+        let isDragging = false;
+        let startX;
+        let scrollStart;
+        let currentScroll;
+
+        function getCardsPerView() {
+            const width = window.innerWidth;
+            if (width <= 480) return 1;
+            if (width <= 768) return 1.2;
+            if (width <= 1024) return 2;
+            return 3;
+        }
+
+        function updateCarousel() {
+            cardsPerView = getCardsPerView();
+            cardWidth = cards[0].offsetWidth + 24;
+            maxScroll = track.scrollWidth - carousel.offsetWidth;
+            goToSlide(currentSlide, false);
+        }
+
+        function goToSlide(index, animate = true) {
+            const totalSlides = cards.length;
+            currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+            
+            const scrollAmount = currentSlide * cardWidth;
+            track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+            track.style.transform = `translateX(-${Math.min(scrollAmount, maxScroll)}px)`;
+            currentScroll = Math.min(scrollAmount, maxScroll);
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                if (!isPaused) {
+                    nextSlide();
+                }
+            }, 5000);
+        }
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Touch/Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isPaused = true;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            isPaused = false;
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (diff > swipeThreshold) {
+                nextSlide();
+            } else if (diff < -swipeThreshold) {
+                prevSlide();
+            }
+        }
+
+        // Click and drag scrolling
+        track.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX;
+            scrollStart = currentScroll;
+            track.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const x = e.pageX;
+            const diff = startX - x;
+            const newScroll = Math.max(0, Math.min(scrollStart + diff, maxScroll));
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${newScroll}px)`;
+            currentScroll = newScroll;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                track.style.cursor = 'grab';
+                // Snap to nearest slide
+                const slideIndex = Math.round(currentScroll / cardWidth);
+                goToSlide(slideIndex);
+            }
+        });
+
+        // Initialize
+        window.addEventListener('load', updateCarousel);
+        window.addEventListener('resize', updateCarousel);
+        startAutoScroll();
     </script>
 </body>
 </html>
