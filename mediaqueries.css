@@ -130,11 +130,18 @@
         margin-bottom: var(--spacing-md);
     }
 
+    .value-prop {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+
     .btn-container {
         flex-direction: column;
         gap: var(--spacing-sm);
         width: 100%;
         max-width: 280px;
+        margin: 0 auto;
     }
 
     .btn {
@@ -254,6 +261,29 @@
     .tag {
         font-size: 0.7rem;
         padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    /* Case Study */
+    .case-study h4 {
+        font-size: 0.75rem;
+    }
+
+    .case-study p {
+        font-size: 0.9rem;
+    }
+
+    /* Testimonials Section */
+    #testimonials {
+        min-height: auto;
+        padding-bottom: var(--spacing-2xl);
+    }
+
+    .testimonial-card {
+        padding: var(--spacing-lg);
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
     }
 
     /* Contact Section */
@@ -377,6 +407,7 @@
 
     .btn-container {
         max-width: 240px;
+        margin: 0 auto;
     }
 
     .btn {
@@ -557,7 +588,9 @@
     .hamburger-nav,
     .arrow,
     #socials-container,
-    .btn-container {
+    .btn-container,
+    .screenshot-gallery,
+    .lightbox {
         display: none !important;
     }
 

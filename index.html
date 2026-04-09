@@ -19,6 +19,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -35,6 +36,7 @@
                     <li><a href="#about" onclick="toggleMenu()">About</a></li>
                     <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
                     <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
                     <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 </ul>
             </div>
@@ -49,10 +51,11 @@
             <div class="section_text">
                 <p class="section_text_p1">Hello, I'm</p>
                 <h1 class="title">Jeremy Mwesigwa</h1>
-                <p class="section_text_p2">Android Developer & CS Student</p>
+                <p class="section_text_p2">Software Developer & CS Student</p>
+                <p class="value-prop">I build mobile apps, systems that prioritize privacy, usability, and purpose. Crafting solutions that work offline and respect user data.</p>
                 <div class="btn-container">
-                    <a href="./assets/resume.pdf" class="btn btn-color-2" target="_blank" rel="noopener">Download CV</a>
-                    <a href="#contact" class="btn btn-color-1">Contact Info</a>
+                    <a href="#projects" class="btn btn-color-2">View My Work</a>
+                    <a href="./assets/resume.pdf" class="btn btn-color-1" target="_blank" rel="noopener">Download CV</a>
                 </div>
                 <div id="socials-container">
                     <a href="https://www.linkedin.com/in/jeremy-sebudde-b08733368" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
@@ -162,7 +165,20 @@
             <div class="about-containers">
                 <article class="details-container project-card">
                     <h3 class="project-title">PocketPal</h3>
-                    <p class="project-desc">A fully offline personal finance tracker with device-centric security, visual spending insights. Built with React Native & Android Studio.</p>
+                    <div class="case-study">
+                        <div class="case-study-section">
+                            <h4>The Problem</h4>
+                            <p>Many people lack access to secure, offline-capable finance tracking. Cloud-based apps require internet and raise privacy concerns.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>The Solution</h4>
+                            <p>Built a fully offline finance tracker with local encryption and visual spending analytics.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>The Results</h4>
+                            <p>Device-centric security ensures user data never leaves the phone. Clean UI makes expense tracking effortless.</p>
+                        </div>
+                    </div>
                     <div class="tag-row">
                         <span class="tag">React Native</span>
                         <span class="tag">Offline-First</span>
@@ -181,7 +197,20 @@
                 </article>
                 <article class="details-container project-card">
                     <h3 class="project-title">Milestone</h3>
-                    <p class="project-desc">A backend-free goal-tracking application enabling users to log progress with daily dedication streaks, full progress journals, and active goal cards.</p>
+                    <div class="case-study">
+                        <div class="case-study-section">
+                            <h4>The Problem</h4>
+                            <p>Goal tracking apps often require accounts, internet, or lack the journaling depth needed for meaningful progress reflection.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>The Solution</h4>
+                            <p>Created a backend-free app with daily streaks, full progress journals, and visual goal cards all stored locally.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>The Results</h4>
+                            <p>Users can track goals without signup. Streak system motivates consistency while journals capture growth.</p>
+                        </div>
+                    </div>
                     <div class="tag-row">
                         <span class="tag">React Native</span>
                         <span class="tag">Kotlin</span>
@@ -202,6 +231,22 @@
             <a href="#contact" class="arrow" aria-label="Scroll to contact section">
                 <img src="assets/arrow.png" alt="">
             </a>
+        </section>
+
+        <section id="testimonials" class="fade-in-section">
+            <header class="section-header">
+                <p class="section_text_p1">What People Say</p>
+                <h2 class="title">Testimonials</h2>
+            </header>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Jeremy demonstrated exceptional problem-solving skills during his internship. He consistently delivered clean, well-documented code and showed great initiative in tackling complex features."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Samuel Kariuki</p>
+                        <p class="author-role">Tech Lead, Sable International</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="contact" class="fade-in-section">

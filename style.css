@@ -147,6 +147,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--spacing-lg);
 }
 
+.value-prop {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 480px;
+    margin: 0 auto var(--spacing-xl);
+    line-height: 1.7;
+}
+
 /* ========================================
    Links & Buttons
    ======================================== */
@@ -562,11 +570,41 @@ section {
 .project-title {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
 }
 
 .project-desc {
     margin-bottom: var(--spacing-lg);
+}
+
+/* Case Study */
+.case-study {
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+}
+
+.case-study-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.case-study-section:last-child {
+    margin-bottom: 0;
+}
+
+.case-study-section h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xs);
+}
+
+.case-study-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .tag-row {
@@ -716,6 +754,57 @@ section {
     height: 2rem;
     width: 2rem;
     min-width: 2rem;
+}
+
+/* ========================================
+   Testimonials Section
+   ======================================== */
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.testimonial-card {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    font-style: italic;
+    margin-bottom: var(--spacing-lg);
+}
+
+.testimonial-text::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--color-text-light);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-author {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.author-role {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
 }
 
 /* ========================================
