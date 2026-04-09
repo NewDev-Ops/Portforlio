@@ -286,6 +286,45 @@
         font-size: 1rem;
     }
 
+    /* Shop Section */
+    #shop {
+        min-height: auto;
+        padding-bottom: var(--spacing-2xl);
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .shop-categories {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .shop-card {
+        max-width: 100%;
+    }
+
+    .shop-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .shop-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .shop-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .shop-card p {
+        font-size: 0.9rem;
+    }
+
     /* Contact Section */
     #contact {
         min-height: auto;
@@ -590,7 +629,8 @@
     #socials-container,
     .btn-container,
     .screenshot-gallery,
-    .lightbox {
+    .lightbox,
+    #shop {
         display: none !important;
     }
 
