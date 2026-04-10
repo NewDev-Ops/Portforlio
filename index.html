@@ -340,7 +340,7 @@
                             <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                             </svg>
-                            <p>Jeremy is a wise and strategic investor whose ingenious money management system reflects a brilliant approach to wealth creation. He is a resilient, high-performing individual who handles challenges with ease and consistently delivers excellence across diverse fields. But beyond that, Jeremy is incredibly supportive and reliable, always making himself available to provide guidance whenever it's needed. He knows how to manage time, knows how to focus on what matters most.</p>
+                            <p>Jeremy is a wise and strategic investor whose ingenious money management system reflects a brilliant approach to wealth creation. He is a resilient, high-performing individual who handles challenges with ease and consistently delivers excellence across diverse fields. </p>
                         </div>
                         <div class="testimonial-author">
                             <p class="author-name">Collins Kinoti</p>
@@ -352,7 +352,7 @@
                     <button class="testimonial-dot active" data-index="0" aria-label="View testimonial 1"></button>
                     <button class="testimonial-dot" data-index="1" aria-label="View testimonial 2"></button>
                     <button class="testimonial-dot" data-index="2" aria-label="View testimonial 3"></button>
-                    <button class="testimonial-dot" data-index="3" aria-label="View testimonial 4"></button>
+                    
                 </div>
             </div>
         </section>
@@ -392,202 +392,189 @@
     </div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu-links');
-            const icon = document.querySelector('.hamburger-icon');
-            const isOpen = menu.classList.toggle('open');
-            icon.classList.toggle('open');
-            icon.setAttribute('aria-expanded', isOpen);
-        }
+    // Mobile Menu
+    function toggleMenu() {
+        const menu = document.querySelector('.menu-links');
+        const icon = document.querySelector('.hamburger-icon');
+        const isOpen = menu.classList.toggle('open');
+        icon.classList.toggle('open');
+        icon.setAttribute('aria-expanded', isOpen);
+    }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in-section').forEach((section) => {
-            observer.observe(section);
-        });
-
-        // Lightbox functionality
-        let currentImages = [];
-        let currentIndex = 0;
-
-        function openLightbox(imgElement) {
-            const row = imgElement.closest('.screenshot-row');
-            currentImages = Array.from(row.querySelectorAll('img')).map(img => img.src);
-            currentIndex = currentImages.indexOf(imgElement.src);
-            
-            document.getElementById('lightbox-img').src = imgElement.src;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function navigateLightbox(direction) {
-            currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
-            document.getElementById('lightbox-img').src = currentImages[currentIndex];
-        }
-
-        document.querySelectorAll('.screenshot-row img').forEach(img => {
-            img.addEventListener('click', () => openLightbox(img));
-        });
-
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('lightbox')) {
-                closeLightbox();
+    // Fade-in sections
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
         });
+    }, { threshold: 0.1 });
 
-        document.addEventListener('keydown', (e) => {
-            const lightbox = document.getElementById('lightbox');
-            if (lightbox.classList.contains('active')) {
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft') navigateLightbox(-1);
-                if (e.key === 'ArrowRight') navigateLightbox(1);
-            }
+    document.querySelectorAll('.fade-in-section').forEach((section) => {
+        observer.observe(section);
+    });
+
+    // Lightbox
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openLightbox(imgElement) {
+        const row = imgElement.closest('.screenshot-row');
+        currentImages = Array.from(row.querySelectorAll('img')).map(img => img.src);
+        currentIndex = currentImages.indexOf(imgElement.src);
+        document.getElementById('lightbox-img').src = imgElement.src;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(direction) {
+        currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+        document.getElementById('lightbox-img').src = currentImages[currentIndex];
+    }
+
+    document.querySelectorAll('.screenshot-row img').forEach(img => {
+        img.addEventListener('click', () => openLightbox(img));
+    });
+
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('lightbox')) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        }
+    });
+
+    // =============================================
+    // Testimonial Carousel — Infinite Loop
+    // =============================================
+    const track = document.querySelector('.testimonial-track');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    const originalCards = Array.from(document.querySelectorAll('.testimonial-card'));
+    const totalOriginal = originalCards.length;
+
+    let currentSlide = 0;
+    let isTransitioning = false;
+    let autoScrollInterval;
+    let isPaused = false;
+
+    // Clone cards before and after for seamless looping
+    function setupClones() {
+        track.querySelectorAll('.cloned').forEach(el => el.remove());
+
+        // Append clones at the end
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('cloned');
+            track.appendChild(clone);
         });
 
-        // Testimonial Carousel
-        const carousel = document.querySelector('.testimonial-carousel');
-        const track = document.querySelector('.testimonial-track');
-        const cards = document.querySelectorAll('.testimonial-card');
-        const dots = document.querySelectorAll('.testimonial-dot');
-        let currentSlide = 0;
-        let autoScrollInterval;
-        let isPaused = false;
-        let cardWidth;
-        let cardsPerView;
-        let maxScroll;
-        let isDragging = false;
-        let startX;
-        let scrollStart;
-        let currentScroll;
-
-        function getCardsPerView() {
-            const width = window.innerWidth;
-            if (width <= 480) return 1;
-            if (width <= 768) return 1.2;
-            if (width <= 1024) return 2;
-            return 3;
-        }
-
-        function updateCarousel() {
-            cardsPerView = getCardsPerView();
-            cardWidth = cards[0].offsetWidth + 24;
-            maxScroll = track.scrollWidth - carousel.offsetWidth;
-            goToSlide(currentSlide, false);
-        }
-
-        function goToSlide(index, animate = true) {
-            const totalSlides = cards.length;
-            currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
-            
-            const scrollAmount = currentSlide * cardWidth;
-            track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
-            track.style.transform = `translateX(-${Math.min(scrollAmount, maxScroll)}px)`;
-            currentScroll = Math.min(scrollAmount, maxScroll);
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
-        }
-
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
-
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-                if (!isPaused) {
-                    nextSlide();
-                }
-            }, 5000);
-        }
-
-        // Pause on hover
-        carousel.addEventListener('mouseenter', () => {
-            isPaused = true;
+        // Prepend clones at the start
+        [...originalCards].reverse().forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('cloned');
+            track.prepend(clone);
         });
+    }
 
-        carousel.addEventListener('mouseleave', () => {
-            isPaused = false;
-        });
+    function getCardWidth() {
+        const card = track.querySelector('.testimonial-card');
+        if (!card) return 384;
+        const gap = parseFloat(getComputedStyle(track).gap) || 24;
+        return card.getBoundingClientRect().width + gap;
+    }
 
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
-        });
+    function jumpToSlide(index) {
+        track.style.transition = 'none';
+        currentSlide = index;
+        track.style.transform = `translateX(-${currentSlide * getCardWidth()}px)`;
+    }
 
-        // Touch/Swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
+    function goToSlide(index, animate = true) {
+        if (isTransitioning && animate) return;
+        isTransitioning = true;
 
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            isPaused = true;
-        }, { passive: true });
+        currentSlide = index;
+        track.style.transition = animate
+            ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            : 'none';
+        track.style.transform = `translateX(-${currentSlide * getCardWidth()}px)`;
 
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            isPaused = false;
-        }, { passive: true });
+        // Map to dot index (accounting for prepended clones)
+        const dotIndex = ((currentSlide - totalOriginal) % totalOriginal + totalOriginal) % totalOriginal;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === dotIndex));
+    }
 
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            
-            if (diff > swipeThreshold) {
-                nextSlide();
-            } else if (diff < -swipeThreshold) {
-                prevSlide();
-            }
+    track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+
+        // Silently jump back to real cards when entering clone territory
+        if (currentSlide >= totalOriginal * 2) {
+            jumpToSlide(currentSlide - totalOriginal);
         }
+        if (currentSlide < totalOriginal) {
+            jumpToSlide(currentSlide + totalOriginal);
+        }
+    });
 
-        // Click and drag scrolling
-        track.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.pageX;
-            scrollStart = currentScroll;
-            track.style.cursor = 'grabbing';
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
+
+    function startAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+            if (!isPaused) nextSlide();
+        }, 4000);
+    }
+
+    // Pause on hover
+    const carousel = document.querySelector('.testimonial-carousel');
+    carousel.addEventListener('mouseenter', () => { isPaused = true; });
+    carousel.addEventListener('mouseleave', () => { isPaused = false; });
+
+    // Dot navigation
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            goToSlide(totalOriginal + i);
+            startAutoScroll();
         });
+    });
 
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const x = e.pageX;
-            const diff = startX - x;
-            const newScroll = Math.max(0, Math.min(scrollStart + diff, maxScroll));
-            track.style.transition = 'none';
-            track.style.transform = `translateX(-${newScroll}px)`;
-            currentScroll = newScroll;
-        });
+    // Touch / swipe
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        isPaused = true;
+    }, { passive: true });
 
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                track.style.cursor = 'grab';
-                // Snap to nearest slide
-                const slideIndex = Math.round(currentScroll / cardWidth);
-                goToSlide(slideIndex);
-            }
-        });
+    track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? nextSlide() : prevSlide();
+        }
+        isPaused = false;
+    }, { passive: true });
 
-        // Initialize
-        window.addEventListener('load', updateCarousel);
-        window.addEventListener('resize', updateCarousel);
+    // Init
+    window.addEventListener('load', () => {
+        setupClones();
+        jumpToSlide(totalOriginal); // start on first real card
         startAutoScroll();
-    </script>
+    });
+
+    window.addEventListener('resize', () => {
+        setupClones();
+        jumpToSlide(totalOriginal);
+    });
+</script>
 </body>
 </html>

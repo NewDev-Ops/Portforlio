@@ -78,8 +78,13 @@
     }
 
     /* Testimonials - Tablet */
-    .testimonial-card {
-        flex: 0 0 calc(50% - var(--spacing-md));
+    .testimonial-carousel {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .testimonial-card:not(.cloned) {
+        flex: 0 0 340px;
         min-height: 350px;
     }
 }
@@ -282,10 +287,27 @@
     #testimonials {
         min-height: auto;
         padding-bottom: var(--spacing-2xl);
+        overflow: visible;
     }
 
-    .testimonial-card {
-        flex: 0 0 calc(100% - var(--spacing-lg));
+    .testimonial-carousel {
+        padding: var(--spacing-md) 0;
+        overflow-x: hidden;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start;
+        max-width: 100%;
+    }
+
+    .testimonial-track {
+        justify-content: flex-start;
+        padding: 0 var(--section-margin);
+    }
+
+    .testimonial-card:not(.cloned) {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
         padding: var(--spacing-lg);
         min-height: 280px;
     }
@@ -549,8 +571,8 @@
     }
 
     /* Testimonials - Small Mobile */
-    .testimonial-card {
-        flex: 0 0 calc(100% - var(--spacing-md));
+    .testimonial-card:not(.cloned) {
+        flex: 0 0 260px;
         padding: var(--spacing-md);
         min-height: 260px;
     }
