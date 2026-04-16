@@ -291,35 +291,43 @@
     }
 
     .testimonial-carousel {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
         padding: var(--spacing-md) 0;
+        margin: 0;
         overflow-x: hidden;
         overflow-y: visible;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
-        justify-content: flex-start;
-        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .testimonial-track {
+        display: flex;
+        gap: 16px;
+        padding: 0 16px;
+        box-sizing: border-box;
         justify-content: flex-start;
-        padding: 0 var(--section-margin);
     }
 
     .testimonial-card:not(.cloned) {
-        flex: 0 0 280px;
-        scroll-snap-align: start;
+        flex: 0 0 calc(100vw - 48px);
+        max-width: calc(100vw - 48px);
+        scroll-snap-align: center;
         padding: var(--spacing-lg);
-        min-height: 280px;
+        min-height: 300px;
+        box-sizing: border-box;
     }
 
     .testimonial-quote p {
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 1rem;
+        line-height: 1.7;
     }
 
     .quote-icon {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
     }
 
     .testimonial-nav {
@@ -568,19 +576,40 @@
     /* Screenshot Gallery */
     .screenshot-row img {
         max-width: 80px;
+    /* Testimonials - Small Mobile */
+    .testimonial-carousel {
+        padding: var(--spacing-md) 0;
     }
 
-    /* Testimonials - Small Mobile */
+    .testimonial-track {
+        gap: 12px;
+        padding: 0 12px;
+    }
+
     .testimonial-card:not(.cloned) {
-        flex: 0 0 260px;
+        flex: 0 0 calc(100vw - 36px);
+        max-width: calc(100vw - 36px);
         padding: var(--spacing-md);
-        min-height: 260px;
+        min-height: 280px;
     }
 
     .testimonial-quote p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.6;
     }
+
+    .author-name {
+        font-size: 0.9rem;
+    }
+
+    .author-role {
+        font-size: 0.75rem;
+    }
+
+    footer p {
+        font-size: 0.75rem;
+    }
+}
 
     .author-name {
         font-size: 0.9rem;
