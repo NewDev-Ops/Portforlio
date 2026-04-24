@@ -93,6 +93,216 @@ p {
 }
 
 /* ========================================
+   Micro-interactions & Animations
+   ======================================== */
+
+/* Logo pulse on page load */
+@keyframes logoWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.logo {
+    animation: logoWiggle 0.6s ease-in-out;
+    animation-delay: 0.5s;
+    transform-origin: bottom center;
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Gentle pulse for attention */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Bounce effect for buttons */
+@keyframes buttonBounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-4px); }
+    60% { transform: translateY(-2px); }
+}
+
+/* Draw-in effect for checkmarks */
+@keyframes drawCheck {
+    0% { stroke-dashoffset: 100; }
+    100% { stroke-dashoffset: 0; }
+}
+
+/* shimmer effect for loading */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Gentle fade in up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button micro-interactions */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Icon hover effects */
+.icon {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icon:hover {
+    animation: pulse 0.6s ease-in-out;
+}
+
+/* Project card hover lift */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    animation: buttonBounce 0.4s ease-in-out;
+}
+
+/* Nav link underline draw effect */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::before,
+.nav-links a:focus::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Testimonial card interactive states */
+.testimonial-card:hover {
+    animation: buttonBounce 0.4s ease-in-out;
+}
+
+/* Section header animation on scroll */
+.section-header {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+#about .section-header { animation-delay: 0.1s; }
+#experience .section-header { animation-delay: 0.2s; }
+#projects .section-header { animation-delay: 0.3s; }
+#shop .section-header { animation-delay: 0.4s; }
+#testimonials .section-header { animation-delay: 0.5s; }
+#contact .section-header { animation-delay: 0.6s; }
+
+/* Hero section typing effect simulation */
+.title {
+    overflow: hidden;
+    border-right: 2px solid var(--color-accent);
+    white-space: nowrap;
+    animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { border-color: var(--color-accent); }
+    50% { border-color: transparent; }
+}
+
+/* Decorative floating shapes (optional backgrounds) */
+.decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.03), rgba(26, 26, 26, 0.08));
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+}
+
+.decoration-circle:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -5%;
+    animation-delay: 0s;
+}
+
+.decoration-circle:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    right: -3%;
+    animation-delay: 2s;
+}
+
+.decoration-circle:nth-child(3) {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 5%;
+    animation-delay: 4s;
+}
+
+/* Smooth scroll behavior enhancement */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
    Animations
    ======================================== */
 .fade-in-section {
@@ -108,10 +318,13 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .fade-in-section {
-        opacity: 1;
-        transform: none;
-        transition: none;
+    .fade-in-section, .section-header, .logo, .decoration-circle, * {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    html {
+        scroll-behavior: auto;
     }
 }
 
@@ -182,6 +395,10 @@ a:hover {
     border: 2px solid transparent;
     transition: all var(--transition-base);
     white-space: nowrap;
+}
+
+.btn:active {
+    animation: buttonBounce 0.3s ease-in-out;
 }
 
 .btn:focus-visible {
@@ -364,7 +581,14 @@ nav {
     font-weight: 500;
     color: var(--color-text);
     min-height: var(--touch-target-min);
-    transition: color var(--transition-fast);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.menu-links a:hover,
+.menu-links a:focus {
+    color: var(--color-accent);
+    transform: scale(1.05);
+}
 }
 
 .menu-links a:hover {
@@ -667,6 +891,14 @@ section {
     padding: var(--spacing-xs) var(--spacing-md);
     font-weight: 500;
     border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.tag:hover {
+    animation: buttonBounce 0.3s ease-in-out;
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
 }
 
 .project-btn {
@@ -699,8 +931,12 @@ section {
 }
 
 .screenshot-row img:hover {
-    transform: scale(1.05);
+    animation: buttonBounce 0.3s ease-in-out;
     box-shadow: var(--shadow-md);
+}
+
+.screenshot-row img:active {
+    transform: scale(0.98);
 }
 
 /* Lightbox Modal */
@@ -1027,11 +1263,17 @@ section {
 .testimonial-modal-close:hover {
     background: var(--color-accent);
     color: white;
+    animation: buttonBounce 0.4s ease-in-out;
 }
 
 .testimonial-modal-close:focus {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
+}
+
+/* Modal open animation */
+.testimonial-modal.active {
+    animation: fadeInUp 0.3s ease-out;
 }
 
 .testimonial-modal-quote {
